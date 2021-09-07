@@ -1,8 +1,9 @@
 package resources;
-
-import resources.adminController.AdminOperations;
-
 import javax.swing.*;
+import resources.adminController.*;
+import resources.view.*;
+import resources.model.*;
+import resources.userController.*;
 
 public class Main {
 
