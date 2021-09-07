@@ -3,6 +3,10 @@ package resources.repository;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ *
+ * @author Keanu Johnston
+ */
 public class DatabaseConnection {
     public Connection databaseLink;
 

@@ -4,8 +4,8 @@ public class User{
 
     String fName;
     String lName;
-    char[20] emailAddress;
-    char[8] password;
+    char[] emailAddress;
+    char[] password;
     boolean userFined;
 
     public User( String fn, String ln, char[] email, char[] passw ){        // purposefully does not include boolean userFined, as a new user wouldnt have been able to be fined

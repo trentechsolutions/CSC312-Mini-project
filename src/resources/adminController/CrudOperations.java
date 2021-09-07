@@ -1,13 +1,13 @@
 package resources.adminController;
 
-import awt.event.*;
+//import awt.event.*;
 import java.sql.*;
 import javax.swing.*;
-import net.proteanit.sql.DbUtils;
+//import net.proteanit.sql.DbUtils;
 
 public class CrudOperations {
 
-    //Creating the conneciton to the Database
+    //Creating the connection to the Database
     public static Connection connect(){
         try{
             Class.forName("Enter the name of the Database");
@@ -49,7 +49,7 @@ public class CrudOperations {
 
             //Creating the users table
             String sql1 = "CREATE TABLE USERS(UID INT NOT NULL AUTO_INCREMENT PRIMARY KEY, USERNAME VARCHAR(30), PASSWORD VARCHAR(30), ADMIN BOOLEAN)";
-            state.executeUpdate(sql1)
+            state.executeUpdate(sql1);
 
             //Inserting into the users library
             state.executeUpdate("INSERT INTO USERS(USERNAME, PASSWORD, ADMIN) VALUES('admin','admin', TRUE)");
@@ -142,7 +142,7 @@ public class CrudOperations {
                     window.setLocationRelativeTo(null);
                 }
                 catch (SQLException e1){
-                    JOptionPane.showMessageDialog(null, e1;
+                    JOptionPane.showMessageDialog(null, e1);
                 }
             }
         });
