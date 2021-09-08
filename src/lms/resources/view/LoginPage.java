@@ -1,6 +1,8 @@
 package lms.resources.view;
 
 import javax.swing.JOptionPane;
+import java.sql.*;
+import lms.resources.repository.DatabaseConnection;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -169,7 +171,7 @@ public class LoginPage extends javax.swing.JFrame {
     }//GEN-LAST:event_RegisterButtonActionPerformed
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
-        // TODO add your handling code here:
+
         if(Username.getText().equals("admin") && LoginPassword.getText().equals("admin")){
             setVisible(false);
             new Menu().setVisible(true);

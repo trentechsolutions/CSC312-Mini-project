@@ -1,4 +1,10 @@
 package lms.resources.view;
+
+import java.sql.Connection;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import lms.resources.repository.DatabaseConnection;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -20,7 +26,7 @@ public class AdminMenu extends javax.swing.JFrame {
     }
 
     AdminMenu() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("In adminMenu class");
     }
 
     /**
