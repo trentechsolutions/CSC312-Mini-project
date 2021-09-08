@@ -57,6 +57,7 @@ public class User{
 
     public boolean setFine(boolean a){
         userFined = a;
+        return userFined;
     }
 
 //////////////////////////////////////////////////////////////////////
