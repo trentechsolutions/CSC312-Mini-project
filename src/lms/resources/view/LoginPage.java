@@ -3,6 +3,7 @@ package lms.resources.view;
 import javax.swing.JOptionPane;
 import java.sql.*;
 import lms.resources.repository.DatabaseConnection;
+import lms.resources.adminController.IDandPasswords;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,7 +16,7 @@ import lms.resources.repository.DatabaseConnection;
  * @author Shuaib UWC
  */
 public class LoginPage extends javax.swing.JFrame {
-
+    IDandPasswords loginInfo = new IDandPasswords(); //This is where our single users login details are stored. Does not specify whether user is admin or student.
     /**
      * Creates new form LoginPage
      */
@@ -171,14 +172,11 @@ public class LoginPage extends javax.swing.JFrame {
     }//GEN-LAST:event_RegisterButtonActionPerformed
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
-
-        if(Username.getText().equals("admin") && LoginPassword.getText().equals("admin")){
-            setVisible(false);
-            new Menu().setVisible(true);
-        }
-        else if(Username.getText().equals("admin1") && LoginPassword.getText().equals("admin1")){
-            setVisible(false);
-            new AdminMenu().setVisible(true);
+         if(loginInfo.getLoginInfo().containsKey(Username.getText())){
+            if(loginInfo.getLoginInfo().get(Username.getText()).equals(LoginPassword.getText())){
+                setVisible(false);
+                new Menu().setVisible(true);
+            }
         }
         else
             JOptionPane.showMessageDialog(null, "Incorect user name or password!");
