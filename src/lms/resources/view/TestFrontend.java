@@ -1,9 +1,11 @@
+package lms.resources.view;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lms.resources.view;
+
 
 import java.sql.*;
 import javax.swing.JOptionPane;
@@ -86,29 +88,52 @@ public class TestFrontend extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
-        int user_id = 8;
-        int book_id = 8;
+        // the variables listed below are the same name on the Database attributes
+        // All database attributes are listed in the ERD Diagram on Google drive
+        
+        // All Backend methods need to follow class diagram scheme, namely follow the datatype,
+        // for instance, declaring user_id as a String variable wont effect the database.
+        int user_id = 11;
+        int book_id = 11;
         String user_fname = "Ben";
         String user_lname = "Selleck";
         String user_password = "1234";
         String user_email = "johnston@gmail.com";
         
+        // ===================
+        // Here, you will interact with the database
+        // ===================
         try
         {
+            //1.Setup Database connection
+            //====================
+            // first you need to setup the connection
             Connection con = DatabaseConnection.getCon();
             Statement st=con.createStatement();
+            //====================
+
+            //2.Implement sql manipulation commands
+            //====================
+            //Here, you implement sql code to manipulate the database
+            //The executeUpdate method takes a sql command, this sql command manipulates the database
             st.executeUpdate("insert into user values('"+user_id+"','"+book_id+"','"+user_fname+"','"+user_lname+"','"+user_password+"','"+user_email+"')");
+            //=====================
             
+            //Display a feedback message
             JOptionPane.showMessageDialog(null,"Successfully updated");
-            //setVisible(false);
-            new lms.resources.view.AdminMenu().setVisible(true);
+            
+            //3.Navigate to class file
+            //=======================
+            //Navigate to AdminMenu (A small window in the top left corner will appear behind the login window
+            new AdminMenu().setVisible(true);
+            //=======================
                 
+        // When an error occurs the catch will invoke a JOption message dialog saying that an error has occurred.    
         }catch(Exception e)
         {
             JOptionPane.showMessageDialog(null,"Sorry, an error has occurred");
             setVisible(false);
-            new lms.resources.view.AdminMenu().setVisible(true);
+            new AdminMenu().setVisible(true);
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -137,6 +162,7 @@ public class TestFrontend extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(TestFrontend.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
