@@ -8,7 +8,7 @@ package lms.resources.view;
 
 /**
  *
- * @author Shuaib UWC
+ * @author Shuaib UWC is busy making tea
  */
 public class AdminMenu extends javax.swing.JFrame {
 
