@@ -15,7 +15,7 @@ public class DatabaseConnection {
         try
         {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc-library-system-app?zeroDateTimeBehavior=convertToNull","root","99KJ@PROm");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdatabase?zeroDateTimeBehavior=convertToNull","root","99KJ@PROm");
             return con;
             
         }catch(Exception e){

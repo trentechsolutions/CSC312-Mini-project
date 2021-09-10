@@ -93,8 +93,8 @@ public class TestFrontend extends javax.swing.JFrame {
         
         // All Backend methods need to follow class diagram scheme, namely follow the datatype,
         // for instance, declaring user_id as a String variable wont effect the database.
-        int user_id = 11;
-        int book_id = 11;
+        int user_id = 12;
+        int book_id = 12;
         String user_fname = "Ben";
         String user_lname = "Selleck";
         String user_password = "1234";

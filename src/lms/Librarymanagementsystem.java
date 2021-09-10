@@ -21,8 +21,8 @@ public class Librarymanagementsystem {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        JFrame frame = new TestFrontend();
-        frame.setVisible(true);
+//        JFrame frame = new TestFrontend();
+//        frame.setVisible(true);
        
 
 //        AdminOperations adminOperations = new AdminOperations();
