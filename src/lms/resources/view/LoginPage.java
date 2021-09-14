@@ -1,13 +1,11 @@
 package lms.resources.view;
 
 
+import java.util.HashMap;
 import javax.swing.JOptionPane;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.HashMap; 
-import java.sql.ResultSet;
+import lms.resources.adminController.Admin;
+import lms.resources.adminController.AdminOperations;
+import lms.resources.model.User;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,7 +18,8 @@ import java.sql.ResultSet;
  * @author Shuaib UWC
  */
 public class LoginPage extends javax.swing.JFrame {
-
+    static String currentAccessType = "";
+    static Integer accessorID = 0;
     /**
      * Creates new form LoginPage
      */
@@ -166,54 +165,26 @@ public class LoginPage extends javax.swing.JFrame {
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
-        Connection con = null;
-        try{
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdatabase","root","joseppi");
-        }catch(SQLException e){
-            e.printStackTrace();
+        AdminOperations adminOps = new AdminOperations();
+        HashMap<Integer, Admin> admins= adminOps.getAdmins();
+        HashMap<Integer, User> users= adminOps.getUsers();
+        if(users.containsKey(Integer.parseInt(Username.getText()))){
+            if(users.get(Integer.parseInt(Username.getText())).getPassword().equals(LoginPassword.getText())){
+                currentAccessType = "user";
+                accessorID = Integer.parseInt(Username.getText());
+                setVisible(false);
+                new Menu().setVisible(true);
+            }  
         }
-       
-        HashMap<Integer, Integer> idAndPasswordsAdmin = new HashMap<Integer, Integer>();
-        HashMap<Integer, Integer> idAndPasswordsUser= new HashMap<Integer, Integer>();
-        Statement st = null;
-        ResultSet rs = null;
-        try{
-        st = con .createStatement();
-        rs = st.executeQuery("SELECT * FROM admin");
-        while(rs.next()){
-        Integer id = rs.getInt("admin_id");
-        Integer password = rs.getInt("admin_password");
-        idAndPasswordsAdmin.put(id, password);
+        else if(admins.containsKey(Integer.parseInt(Username.getText()))){
+            if(admins.get(Integer.parseInt(Username.getText())).getPassword().equals(Integer.parseInt(LoginPassword.getText()))){
+                currentAccessType = "admin";
+                accessorID = Integer.parseInt(Username.getText());
+                setVisible(false);
+                new Menu().setVisible(true);
+            }  
         }
-        }catch(Exception  e){
-                    e.printStackTrace();
-        
-        }
-        try{
-        st = con .createStatement();
-        rs = st.executeQuery("SELECT * FROM user");
-        while(rs.next()){
-        Integer id = rs.getInt("user_id");
-        Integer password = rs.getInt("user_password");
-        idAndPasswordsAdmin.put(id, password);
-        }
-        }catch(Exception  e){
-                    e.printStackTrace();
-                }
-        
 
-        if(idAndPasswordsAdmin.containsKey(Integer.parseInt(Username.getText()))){
-            if(idAndPasswordsAdmin.get(Integer.parseInt(Username.getText())).equals(Integer.parseInt(LoginPassword.getText()))){
-                setVisible(false);
-                new Menu().setVisible(true);
-            }  
-        }
-        else if(idAndPasswordsUser.containsKey(Integer.parseInt(Username.getText()))){
-            if(idAndPasswordsUser.get(Integer.parseInt(Username.getText())).equals(Integer.parseInt(LoginPassword.getText()))){
-                setVisible(false);
-                new Menu().setVisible(true);
-            }  
-        }
         else
             JOptionPane.showMessageDialog(null, "Incorect user name or password!");
     }                                           

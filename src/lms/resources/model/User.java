@@ -4,15 +4,16 @@ public class User{
 
     String fName;
     String lName;
-    char[] emailAddress;
-    char[] password;
-    boolean userFined;
+    String emailAddress;
+    String password;
+    public boolean userFined;
 
-    public User( String fn, String ln, char[] email, char[] passw ){        // purposefully does not include boolean userFined, as a new user wouldnt have been able to be fined
+    public User( String fn, String ln, String email, String passw){        // purposefully does not include boolean userFined, as a new user wouldnt have been able to be fined
         fName = fn;
         lName = ln;
         emailAddress = email;
         password = passw;
+
     }
 
 //      Accessors       //////////////////////////////////////////
@@ -25,11 +26,11 @@ public class User{
         return lName;
     }
 
-    public char[] getEmailAddress(){
+    public String getEmailAddress(){
         return emailAddress;
     }
 
-    public char[] getPassword(){
+    public String getPassword(){
         return password;
     }
 
@@ -47,11 +48,11 @@ public class User{
         lName = a;
     }
 
-    public void setEmailAddress(char[] a){
+    public void setEmailAddress(String a){
         emailAddress = a;
     }
 
-    public void setPassword(char[] a){
+    public void setPassword(String a){
         password = a;
     }
 

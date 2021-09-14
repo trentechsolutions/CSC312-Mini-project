@@ -1,5 +1,16 @@
 package lms.resources.view;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
+import lms.resources.adminController.Admin;
+import lms.resources.adminController.AdminOperations;
+import lms.resources.model.User;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -73,6 +84,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         ViewBooksbtn = new javax.swing.JButton();
         ReturnBookbtn = new javax.swing.JButton();
+        payFine = new javax.swing.JButton();
         LogOut = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -407,6 +419,23 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel1.add(ReturnBookbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 170, 40));
 
+        payFine.setBackground(new java.awt.Color(34, 0, 0));
+        payFine.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        payFine.setForeground(new java.awt.Color(255, 255, 255));
+        payFine.setText("Pay Fine");
+        payFine.setToolTipText("");
+        payFine.setBorder(null);
+        payFine.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        payFine.setMaximumSize(new java.awt.Dimension(79, 15));
+        payFine.setMinimumSize(new java.awt.Dimension(79, 15));
+        payFine.setPreferredSize(new java.awt.Dimension(79, 15));
+        payFine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                payFineActionPerformed(evt);
+            }
+        });
+        jPanel1.add(payFine, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 170, 40));
+
         LogOut.setBackground(new java.awt.Color(34, 0, 0));
         LogOut.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         LogOut.setForeground(new java.awt.Color(255, 0, 0));
@@ -562,6 +591,37 @@ public class Menu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_ReturnBook_ClosebtnActionPerformed
 
+    private void payFineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payFineActionPerformed
+        // TODO add your handling code here:
+        AdminOperations adminOps = new AdminOperations();
+        HashMap<Integer, User> users = adminOps.getUsers();
+        HashMap<Integer, Admin> admins = adminOps.getAdmins();
+        if (LoginPage.currentAccessType == "user"){
+            if(users.get(LoginPage.accessorID).userFined == true){
+                JOptionPane.showConfirmDialog(null, "This will debit your accout, are you sure you want to proceed?", "Confirm transaction",JOptionPane.YES_NO_OPTION);
+                users.get(LoginPage.accessorID).userFined = false;
+                Connection con = null;
+                try{
+                    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lmsdatabase","root","joseppi");
+              }catch(SQLException e){
+                    e.printStackTrace();
+                }
+               
+                try{
+                    Statement st = con.createStatement();
+                    st.executeUpdate("UPDATE user set is_fined = 0 where user_id = " + String.valueOf(LoginPage.accessorID));
+                }catch(SQLException e){
+                    e.printStackTrace();}
+                JOptionPane.showMessageDialog(null, "Transaction Successful", "Confirmation",JOptionPane.PLAIN_MESSAGE);
+                
+            }
+            else
+                JOptionPane.showMessageDialog(null, "You currently have no fines to pay", "Payment error",JOptionPane.PLAIN_MESSAGE);
+        }
+        else 
+            JOptionPane.showMessageDialog(null, "Administrators cannot pay fines", "Access Error",JOptionPane.PLAIN_MESSAGE);
+    }//GEN-LAST:event_payFineActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -645,5 +705,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JButton payFine;
     // End of variables declaration//GEN-END:variables
 }

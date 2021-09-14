@@ -5,10 +5,9 @@
  */
 package lms;
 
-import javax.swing.JFrame;
+import java.util.HashMap;
+import lms.resources.adminController.Admin;
 import lms.resources.adminController.AdminOperations;
-import lms.resources.view.AdminMenu;
-import lms.resources.view.TestFrontend;
 
 /**
  *
@@ -23,7 +22,6 @@ public class Librarymanagementsystem {
         // TODO code application logic here
 //        JFrame frame = new TestFrontend();
 //        frame.setVisible(true);
-       
 
 //        AdminOperations adminOperations = new AdminOperations();
 //        adminOperations.login();
