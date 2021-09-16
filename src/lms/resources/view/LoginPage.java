@@ -169,16 +169,7 @@ public class LoginPage extends javax.swing.JFrame {
         HashMap<Integer, Admin> admins= adminOps.getAdmins();
         HashMap<Integer, User> users= adminOps.getUsers();
         
-        if(admins.containsKey(Integer.parseInt(Username.getText()))){
-            if(admins.get(Integer.parseInt(Username.getText())).getPassword().equals(Integer.parseInt(LoginPassword.getText()))){
-                currentAccessType = "admin";
-                accessorID = Integer.parseInt(Username.getText());
-                setVisible(false);
-                new AdminMenu().setVisible(true);
-            }  
-        }
-        
-        else if(users.containsKey(Integer.parseInt(Username.getText()))){
+        if(users.containsKey(Integer.parseInt(Username.getText()))){
             if(users.get(Integer.parseInt(Username.getText())).getPassword().equals(LoginPassword.getText())){
                 currentAccessType = "user";
                 accessorID = Integer.parseInt(Username.getText());
@@ -186,7 +177,15 @@ public class LoginPage extends javax.swing.JFrame {
                 new Menu().setVisible(true);
             }  
         }
-
+        
+        else if(admins.containsKey(Integer.parseInt(Username.getText()))){
+            if(admins.get(Integer.parseInt(Username.getText())).getPassword().equals(Integer.parseInt(LoginPassword.getText()))){
+                currentAccessType = "admin";
+                accessorID = Integer.parseInt(Username.getText());
+                setVisible(false);
+                new AdminMenu().setVisible(true);
+            }  
+        }
         else
             JOptionPane.showMessageDialog(null, "Incorect user name or password!");
     }                                           
