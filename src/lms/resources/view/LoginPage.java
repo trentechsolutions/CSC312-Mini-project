@@ -168,17 +168,19 @@ public class LoginPage extends javax.swing.JFrame {
         AdminOperations adminOps = new AdminOperations();
         HashMap<Integer, Admin> admins= adminOps.getAdmins();
         HashMap<Integer, User> users= adminOps.getUsers();
-        if(users.containsKey(Integer.parseInt(Username.getText()))){
-            if(users.get(Integer.parseInt(Username.getText())).getPassword().equals(LoginPassword.getText())){
-                currentAccessType = "user";
-                accessorID = Integer.parseInt(Username.getText());
-                setVisible(false);
-                new Menu().setVisible(true);
-            }  
-        }
-        else if(admins.containsKey(Integer.parseInt(Username.getText()))){
+        
+        if(admins.containsKey(Integer.parseInt(Username.getText()))){
             if(admins.get(Integer.parseInt(Username.getText())).getPassword().equals(Integer.parseInt(LoginPassword.getText()))){
                 currentAccessType = "admin";
+                accessorID = Integer.parseInt(Username.getText());
+                setVisible(false);
+                new AdminMenu().setVisible(true);
+            }  
+        }
+        
+        else if(users.containsKey(Integer.parseInt(Username.getText()))){
+            if(users.get(Integer.parseInt(Username.getText())).getPassword().equals(LoginPassword.getText())){
+                currentAccessType = "user";
                 accessorID = Integer.parseInt(Username.getText());
                 setVisible(false);
                 new Menu().setVisible(true);
