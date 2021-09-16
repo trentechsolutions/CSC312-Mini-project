@@ -146,7 +146,7 @@ public class LoginPage extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void UsernameFocusGained(java.awt.event.FocusEvent evt) {                                     
-        //Username.setText("");        // TODO add your handling code here:
+        Username.setText("");        // TODO add your handling code here:
     }                                    
 
     private void LoginPasswordFocusGained(java.awt.event.FocusEvent evt) {                                          
@@ -169,7 +169,10 @@ public class LoginPage extends javax.swing.JFrame {
         HashMap<Integer, Admin> admins= adminOps.getAdmins();
         HashMap<Integer, User> users= adminOps.getUsers();
         
-        if(users.containsKey(Integer.parseInt(Username.getText()))){
+        if(Username.getText().isBlank() || LoginPassword.getText().isBlank())
+            JOptionPane.showMessageDialog(null, "Username/Password cannot be blank.");
+        
+        else if(users.containsKey(Integer.parseInt(Username.getText()))){
             if(users.get(Integer.parseInt(Username.getText())).getPassword().equals(LoginPassword.getText())){
                 currentAccessType = "user";
                 accessorID = Integer.parseInt(Username.getText());

@@ -618,8 +618,6 @@ public class Menu extends javax.swing.JFrame {
             else
                 JOptionPane.showMessageDialog(null, "You currently have no fines to pay", "Payment error",JOptionPane.PLAIN_MESSAGE);
         }
-        else 
-            JOptionPane.showMessageDialog(null, "Administrators cannot pay fines", "Access Error",JOptionPane.PLAIN_MESSAGE);
     }//GEN-LAST:event_payFineActionPerformed
 
     /**
