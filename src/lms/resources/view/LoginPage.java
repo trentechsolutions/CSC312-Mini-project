@@ -58,8 +58,8 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("LOGIN");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 130, -1, 24));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8_male_user_30px.png"))); // NOI18N
+        
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons8_male_user_30px.png"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, -1, -1));
 
         Username.setBackground(new java.awt.Color(0, 0, 0,80));
@@ -82,7 +82,7 @@ public class LoginPage extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 210, 200, 10));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8_unlock_private_30px.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons8_unlock_private_30px.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 230, -1, -1));
 
         LoginPassword.setBackground(new java.awt.Color(0, 0, 0,80));
@@ -128,7 +128,7 @@ public class LoginPage extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login screen.jpeg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("login screen.jpeg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -6,9 +6,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
-import static javax.swing.JOptionPane.showMessageDialog;
 import lms.resources.adminController.Admin;
 import lms.resources.adminController.AdminOperations;
+import lms.resources.adminController.ReturnBookPopUpTemporary;
 import lms.resources.model.User;
 
 /*
@@ -233,7 +233,6 @@ public class Menu extends javax.swing.JFrame {
 
         MathematicsPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 440, 160));
 
-        Math_Closebtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete_20px.png"))); // NOI18N
         Math_Closebtn.setContentAreaFilled(false);
         Math_Closebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Math_Closebtn.addActionListener(new java.awt.event.ActionListener() {
@@ -265,7 +264,6 @@ public class Menu extends javax.swing.JFrame {
 
         ComSciPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 440, 160));
 
-        ComSci_Closebtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete_20px.png"))); // NOI18N
         ComSci_Closebtn.setContentAreaFilled(false);
         ComSci_Closebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ComSci_Closebtn.addActionListener(new java.awt.event.ActionListener() {
@@ -297,7 +295,6 @@ public class Menu extends javax.swing.JFrame {
 
         PhysicsPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 440, 160));
 
-        Physics_Closebtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete_20px.png"))); // NOI18N
         Physics_Closebtn.setContentAreaFilled(false);
         Physics_Closebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Physics_Closebtn.addActionListener(new java.awt.event.ActionListener() {
@@ -329,7 +326,6 @@ public class Menu extends javax.swing.JFrame {
 
         AccountingPanel.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 440, 160));
 
-        Accounting_Closebtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete_20px.png"))); // NOI18N
         Accounting_Closebtn.setContentAreaFilled(false);
         Accounting_Closebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Accounting_Closebtn.addActionListener(new java.awt.event.ActionListener() {
@@ -369,7 +365,6 @@ public class Menu extends javax.swing.JFrame {
         ReturnBook_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ReturnBookPanel.add(ReturnBook_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 100, 30));
 
-        ReturnBook_Closebtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete_20px.png"))); // NOI18N
         ReturnBook_Closebtn.setBorder(null);
         ReturnBook_Closebtn.setContentAreaFilled(false);
         ReturnBook_Closebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -381,8 +376,6 @@ public class Menu extends javax.swing.JFrame {
         ReturnBookPanel.add(ReturnBook_Closebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 30, 20));
 
         jPanel1.add(ReturnBookPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 0, 200));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Menu.jpeg"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 780, -1));
 
         ViewBooksbtn.setBackground(new java.awt.Color(34, 0, 0));
@@ -412,6 +405,15 @@ public class Menu extends javax.swing.JFrame {
         ReturnBookbtn.setText("Return Book");
         ReturnBookbtn.setBorder(null);
         ReturnBookbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ReturnBookbtn.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                ReturnBookbtnAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         ReturnBookbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ReturnBookbtnActionPerformed(evt);
@@ -450,15 +452,17 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel1.add(LogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 170, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo.jpeg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lms/resources/view/Menu.jpeg"))); // NOI18N
         jLabel1.setText(" ");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 500));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 490));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -575,17 +579,8 @@ public class Menu extends javax.swing.JFrame {
         AccountingPanel.setSize(0,0);// TODO add your handling code here:
         LendBookPanel.setSize(0,0);
     }//GEN-LAST:event_Accounting_ClosebtnActionPerformed
-
-    private void ReturnBookbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnBookbtnActionPerformed
-        ReturnBookPanel.setSize(380,200);// TODO add your handling code here:
-        
-        ComSciPanel.setSize(0,0);
-        MathematicsPanel.setSize(0,0);
-        PhysicsPanel.setSize(0,0);
-        AccountingPanel.setSize(0,0);
-        LendBookPanel.setSize(0,0);
-    }//GEN-LAST:event_ReturnBookbtnActionPerformed
-
+                                      
+    
     private void ReturnBook_ClosebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnBook_ClosebtnActionPerformed
         ReturnBookPanel.setSize(0,0);// TODO add your handling code here:
         
@@ -619,6 +614,25 @@ public class Menu extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "You currently have no fines to pay", "Payment error",JOptionPane.PLAIN_MESSAGE);
         }
     }//GEN-LAST:event_payFineActionPerformed
+
+    private void ReturnBookbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnBookbtnActionPerformed
+        //ReturnBookPanel.setSize(380,200);// TODO add your handling code here:
+        AdminOperations adminOps = new AdminOperations();
+        HashMap<Integer, User> users = adminOps.getUsers();
+        
+        if(users.get(LoginPage.accessorID).userFined == true){
+                JOptionPane.showMessageDialog(null, "You currently have one or more books overdue. Please pay the fine on your account in full before returning a book");
+            }
+        else {
+            ReturnBookPopUpTemporary returnPopup = new ReturnBookPopUpTemporary(LoginPage.accessorID);
+
+        }
+            
+    }//GEN-LAST:event_ReturnBookbtnActionPerformed
+
+    private void ReturnBookbtnAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_ReturnBookbtnAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ReturnBookbtnAncestorAdded
 
     /**
      * @param args the command line arguments
